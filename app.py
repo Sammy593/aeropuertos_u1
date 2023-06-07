@@ -37,7 +37,9 @@ def pasajeros():
 def equipajes():
     return render_template('equipajes/index.html')
 
-    # Ledesma
+# Ledesma
+
+# Samuel
 
  #  Iniciando la aplicaciones
 if __name__ == "__main__":
