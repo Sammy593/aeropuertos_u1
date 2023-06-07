@@ -17,7 +17,25 @@ def index():
 def aerolineas():
     return render_template('aerolineas/index.html')
 
+@app.route('/aviones')
+def aviones():
+    return render_template('aviones/index.html')
 
+@app.route('/boletos')
+def boletos():
+    return render_template('boletos/index.html')
+
+@app.route('/vuelos')
+def vuelos():
+    return render_template('vuelos/index.html')
+
+@app.route('/pasajeros')
+def pasajeros():
+    return render_template('pasajeros/index.html')
+
+@app.route('/equipaje')
+def equipaje():
+    return render_template('equipaje/index.html')
 
  #  Iniciando la aplicaciones
 if __name__ == "__main__":
