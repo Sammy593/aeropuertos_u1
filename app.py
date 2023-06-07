@@ -33,9 +33,9 @@ def vuelos():
 def pasajeros():
     return render_template('pasajeros/index.html')
 
-@app.route('/equipaje')
-def equipaje():
-    return render_template('equipaje/index.html')
+@app.route('/equipajes')
+def equipajes():
+    return render_template('equipajes/index.html')
 
  #  Iniciando la aplicaciones
 if __name__ == "__main__":
