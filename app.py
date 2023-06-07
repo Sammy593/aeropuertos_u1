@@ -15,7 +15,8 @@ def index():
 
 @app.route('/aerolineas')
 def aerolineas():
-    return render_template('aerolineas/index.html')
+    lista_aerolineas = consultas.getAerolienas();
+    return render_template('aerolineas/index.html', lista_aerolineas=lista_aerolineas)
 
 @app.route('/aviones')
 def aviones():

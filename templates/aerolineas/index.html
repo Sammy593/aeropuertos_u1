@@ -1,0 +1,53 @@
+{% extends "layout.html" %} 
+{% block index_aerolineas %}
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-dashboard"></i> Aerolineas</h1>
+      <p>Sistema de administracion para Aeropuerto</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="#">Todas las aerolineas</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <table
+          class="table table-striped table-hover table-bordered table-sm bg-white"
+        >
+          <thead>
+            <tr>
+              <td>Nombre</td>
+              <td>Pais</td>
+              <td>Estado</td>
+              <td>Acciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for aerolinea in lista_aerolineas %}
+            <tr>
+              <td>{{aerolinea.nombre}}</td>
+              <td>{{aerolinea.pais}}</td>
+              <td>{{aerolinea.estado}}</td>
+              <td>
+                <a href="/edit_act/{{aerolinea._id}}" class="btn btn-secondary"
+                  >Editar</a
+                >
+                <a
+                  href="/delete_act/{{aerolinea._id}}"
+                  class="btn btn-danger btn-delete"
+                  >Eliminar</a
+                >
+              </td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

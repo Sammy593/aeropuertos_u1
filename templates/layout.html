@@ -97,28 +97,12 @@
     </aside>
 
     <!-- Main -->
-    <main class="app-content">
-      <div class="app-title">
-        <div>
-          <h1><i class="fa fa-dashboard"></i> Administracion</h1>
-          <p>Sistema de administracion para Aeropuerto</p>
-        </div>
-        <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item"><a href="#">Todos los vuelos</a></li> 
-        </ul>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="tile">
+    {% block index %} 
+    {% endblock %}
 
-            {% block index %} 
-            {% endblock %}
-
-          </div>
-        </div>
-      </div>
-    </main>
+    {% block index_aerolineas %}
+    {% endblock %}
+    <!--End  Main -->
 
     <!-- Footer -->
     <!-- Essential javascripts for application to work-->
