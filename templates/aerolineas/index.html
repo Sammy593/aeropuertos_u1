@@ -5,6 +5,7 @@
     <div>
       <h1><i class="fa fa-dashboard"></i> Aerolineas</h1>
       <p>Sistema de administracion para Aeropuerto</p>
+      <a href="{{url_for('form_add_aerolinea')}}" class="btn btn-primary text-white">Nuevo</a>
     </div>
     <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -14,15 +15,16 @@
   <div class="row">
     <div class="col-md-12">
       <div class="tile">
+        <h2>Lista de aerolineas activas</h2>
         <table
           class="table table-striped table-hover table-bordered table-sm bg-white"
         >
           <thead>
             <tr>
-              <td>Nombre</td>
-              <td>Pais</td>
-              <td>Estado</td>
-              <td>Acciones</td>
+              <th>Nombre</th>
+              <th>Pais</th>
+              <th>Estado</th>
+              <th style="width: 25%;">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -32,14 +34,23 @@
               <td>{{aerolinea.pais}}</td>
               <td>{{aerolinea.estado}}</td>
               <td>
-                <a href="/edit_act/{{aerolinea._id}}" class="btn btn-secondary"
+                <a href="/edit_aerolinea/{{aerolinea._id}}" class="btn btn-secondary"
                   >Editar</a
                 >
+                {%if aerolinea.estado == "Activo"%}
                 <a
-                  href="/delete_act/{{aerolinea._id}}"
+                  href="/delete_aerolinea/{{aerolinea._id}}"
                   class="btn btn-danger btn-delete"
-                  >Eliminar</a
+                  >Desactivar</a
                 >
+                {%endif%}
+                {%if aerolinea.estado != "Activo"%}
+                <a
+                  href="/activar_aerolinea/{{aerolinea._id}}"
+                  class="btn btn-success btn-delete"
+                  >Activar</a
+                >
+                {%endif%}
               </td>
             </tr>
 

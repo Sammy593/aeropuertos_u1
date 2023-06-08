@@ -1,0 +1,52 @@
+{% extends "layout.html" %} 
+{% block agregar_equipajes %}
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-suitcase"></i> Equipajes</h1>
+      <p>Sistema de administración para equipajes</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="#">Todos los equipajes</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <form action="/add_equipaje" method="POST">
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <input type="text" name="descripcion" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="peso">Peso</label>
+                <input type="number" name="peso" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="estado">Pasajero</label>
+                <select class="form-control selectpicker col-sm-8" name="idPasajero" id="idPasajero" data-live-search="true" data-size="5" required>
+                    {% for pasajero in pasajeros %}
+                    <option value="{{pasajero['_id']}}">{{pasajero['ci']}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+              <div class="form-group">
+                <label for="estado">Estado</label>
+                <select class="form-control form-select col-sm-5" name="estado" id="estado">
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+            </div>
+              
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Agregar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

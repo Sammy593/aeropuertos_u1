@@ -1,10 +1,51 @@
-{% extends "layout.html" %} 
+{% extends "layout.html" %}
 {% block index %}
+<style>
+  /* Estilos adicionales */
+  .welcome-title {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .welcome-message {
+    font-size: 24px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .feature-box {
+    background-color: #f5f5f5;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .feature-icon {
+    font-size: 48px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .feature-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .feature-description {
+    font-size: 18px;
+    color: #666;
+  }
+</style>
 <main class="app-content">
   <div class="app-title">
     <div>
       <h1><i class="fa fa-dashboard"></i> Inicio</h1>
-      <p>Sistema de administracion para Aeropuerto</p>
+      <p>Sistema de administración para Aeropuerto</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -13,8 +54,34 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="tile">Hola</div>
+      <h2 class="welcome-title">¡Bienvenido a la página de administración de Aeropuerto!</h2>
+      <p class="welcome-message">Aquí encontrarás todas las herramientas y funciones necesarias para administrar eficientemente el aeropuerto.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="feature-box">
+        <i class="fa fa-plane feature-icon"></i>
+        <h3 class="feature-title">Gestión de Vuelos</h3>
+        <p class="feature-description">Administra los vuelos programados, asigna aviones, rutas y controla el estado de cada vuelo.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-box">
+        <i class="fa fa-users feature-icon"></i>
+        <h3 class="feature-title">Control de Pasajeros</h3>
+        <p class="feature-description">Gestiona el registro de pasajeros, sus reservas, asientos asignados y verifica la documentación necesaria.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-box">
+        <i class="fa fa-database feature-icon"></i>
+        <h3 class="feature-title">Análisis de Datos</h3>
+        <p class="feature-description">Obtén informes detallados, gráficos y estadísticas para evaluar el rendimiento del aeropuerto.</p>
+      </div>
     </div>
   </div>
 </main>
 {% endblock %}
+
+

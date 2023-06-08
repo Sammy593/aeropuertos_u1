@@ -1,0 +1,56 @@
+{% extends "layout.html" %} 
+{% block agregar_vuelos %}
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> Agregar Vuelo</h1>
+            <p>Sistema de administración para Aeropuerto</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">Todos los vuelos</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <h2>Ingrese los datos del vuelo</h2>
+                <form action="/add_vuelo" method="POST">
+                    <div class="form-group">
+                        <label for="idAvion">Avión</label>
+                        <input type="text" name="idAvion" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="precio">Precio</label>
+                        <input type="number" name="precio" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="origen">Origen</label>
+                        <input type="text" name="origen" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="destino">Destino</label>
+                        <input type="text" name="destino" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_salida">Fecha de salida</label>
+                        <input type="date" name="fecha_salida" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <select class="form-control form-select col-sm-5" name="estado" id="estado" required>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Agregar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

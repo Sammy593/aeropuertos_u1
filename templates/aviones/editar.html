@@ -1,0 +1,58 @@
+{% extends "layout.html" %} 
+{% block agregar_aviones %}
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-dashboard"></i> Aviones</h1>
+      <p>Sistema de administracion para Aeropuerto</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="#">aviones</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <h2>Editar avion</h2>
+        <form action="/update_avion/{{avion._id}}" method="POST">
+            <div class="form-group">
+                <label for="idAerolinea">Nombre de aerolinea</label>
+                <select class="form-control selectpicker col-sm-8" name="idAerolinea" id="idAerolinea" data-live-search="true" data-size="5" required>
+                    {% for aerolinea in lista_aerolineas %}
+                        {% if avion.idAerolinea == aerolinea['_id'] %}
+                        <option selected value="{{aerolinea['_id']}}">{{aerolinea['nombre']}}</option>
+                        {%else%}
+                        <option value="{{aerolinea['_id']}}">{{aerolinea['nombre']}}</option>
+                        {%endif%}
+                    {%endfor%}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="modelo">Modelo</label>
+                <input type="text" name="modelo" class="form-control" value="{{avion.modelo}}" required>
+           </div>
+           <div class="form-group">
+                <label for="capacidad_de_pasajeros">Capacidad de pasajeros</label>
+                <input type="number" name="capacidad_de_pasajeros" class="form-control" value="{{avion.capacidad_de_pasajeros}}" required>
+            </div>
+           <div class="form-group">
+                <label for="estado">Estado</label>
+                <select class="form-control form-select col-sm-5" name="estado" id="estado" required>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">
+                Agregar
+              </button>
+            </div>
+          </form>
+
+
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "layout.html" %} 
+{% block agregar_aerolineas %}
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-dashboard"></i> Aerolineas</h1>
+      <p>Sistema de administracion para Aeropuerto</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="#">Todas las aerolineas</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <h2>Agregar una Aerolinea</h2>
+        <form action="/add_aerolinea" method="POST">
+            <div class="form-group">
+                 <label for="nombre">Nombre de aerolinea</label>
+                 <input type="text" name="nombre" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="pais">Pais de aerolinea</label>
+                <input type="text" name="pais" class="form-control" required>
+           </div>
+           <div class="form-group">
+                <label for="estado">Estado</label>
+                <select class="form-control form-select col-sm-5" name="estado" id="estado" required>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">
+                Agregar
+              </button>
+            </div>
+          </form>
+
+
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layout.html" %} 
+{% block index_equipajes %}
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-suitcase"></i> Equipajes</h1>
+      <p>Sistema de administración para Equipajes</p>
+      <a href="{{url_for('form_add_equipaje')}}" class="btn btn-primary text-white"><i class="fa fa-plus"></i> Nuevo</a>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="#">Todos los Equipajes</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <table
+          class="table table-striped table-hover table-bordered table-sm bg-white"
+        >
+          <thead>
+            <tr>
+              <!-- <td style="width: 25%;">ID</td> --> 
+              <td>Descripción</td>
+              <td>Peso</td>
+              <td>Pasajero</td>
+              <td>Estado</td>
+              <td style="width: 25%;">Acciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for equipaje in lista_equipajes %}
+            <tr>
+              <!--<td>{{ equipaje._id }}</td> --> 
+              <td>{{ equipaje.descripcion }}</td>
+              <td>{{ equipaje.peso }}</td>
+              
+              {% for pasajero in pasajeros %}
+              {% if pasajero['_id'] == equipaje.idPasajero %}
+              <td> {{ pasajero['ci'] }} </td>
+              {% endif %}
+             {% endfor %}
+             
+              <td>{{ equipaje.estado }}</td>
+              <td>
+                <a href="/edit_equipaje/{{equipaje._id}}" class="btn btn-secondary"
+                  ><i class="fa fa-pencil"></i>Editar</a
+                >
+                <a
+                  href="/delete_equipaje/{{equipaje._id}}"
+                  class="btn btn-danger btn-delete"
+                  ><i class="fa fa-trash"></i>Eliminar</a
+                >
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

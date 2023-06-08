@@ -1,0 +1,68 @@
+{% extends "layout.html" %} 
+{% block index_aerolineas %}
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-dashboard"></i> Aviones</h1>
+      <p>Sistema de administracion para Aeropuerto</p>
+      <a href="{{url_for('form_add_avion')}}" class="btn btn-primary text-white">Nuevo</a>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="#">Todos los aviones</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <h2>Lista de aviones activas</h2>
+        <table
+          class="table table-striped table-hover table-bordered table-sm bg-white"
+        >
+          <thead>
+            <tr>
+              <th>ID Avion</th>
+              <th>Aerolinea</th>
+              <th>Modelo</th>
+              <th>Capacidad pasajeros</th>
+              <th>Estado</th>
+              <th style="width: 25%;">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for avion in lista_aviones %}
+            <tr>
+              <td>{{avion._id}}</td>
+              <td>{{avion.aerolinea}}</td>
+              <td>{{avion.modelo}}</td>
+              <td>{{avion.capacidad_de_pasajeros}}</td>
+              <td>{{avion.estado}}</td>
+              <td>
+                <a href="/edit_avion/{{avion._id}}" class="btn btn-secondary"
+                  >Editar</a
+                >
+                {%if avion.estado == "Activo"%}
+                <a
+                  href="/delete_avion/{{avion._id}}"
+                  class="btn btn-danger btn-delete"
+                  >Desactivar</a
+                >
+                {%endif%}
+                {%if avion.estado != "Activo"%}
+                <a
+                  href="/activar_avion/{{avion._id}}"
+                  class="btn btn-success btn-delete"
+                  >Activar</a
+                >
+                {%endif%}
+              </td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "layout.html" %} 
+{% block boleto_vuelos %}
+<main class="app-content">
+    <div class="app-title">
+        <div>
+        <h1><i class="fa fa-dashboard"></i> Boleto - Vuelo</h1>
+        <p>Sistema de administracion para Aeropuerto</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a href="#">Todos los vuelos</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <div class="tile">
+            <form action="/vender_boleto_vuelo" method="POST">
+                <div class="form-group">
+                     <label for="id_vuelo">Identificacion de vuelo</label>
+                     <input type="text" name="id_vuelo" value="{{vuelo['_id']}}" readonly class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio de vuelo</label>
+                    <input type="text" name="precio" value="{{vuelo['precio']}}" readonly class="form-control">
+               </div>
+                <div class="form-group">
+                    <label for="n_asiento">Numero de asiento</label>
+                    <input type="number" name="n_asiento" class="form-control" required>
+               </div>
+               <div class="form-group">
+                <label for="clase">Clase</label>
+                    <select class="form-control selectpicker col-sm-8" name="clase" id="clase" required>
+                        <option value="Primera clase">Primera clase</option>
+                        <option value="Clase de negocios">Clase de negocios</option>
+                        <option value="Clase economica">Clase economica</option>
+                    </select>
+                </div>
+               <div class="form-group">
+                    <label for="estado">CI Pasajero</label>
+                    <select class="form-control selectpicker col-sm-8" name="id_pasajero" id="id_pasajero" data-live-search="true" data-size="5" required>
+                        {% for pasajero in pasajeros %}
+                        <option value="{{pasajero['_id']}}">{{pasajero['ci']}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Agregar
+                  </button>
+                </div>
+              </form>
+        </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layout.html" %} 
+{% block index_pasajeros %}
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-user"></i> Pasajeros</h1>
+      <p>Sistema de administración para pasajeros</p>
+      <a href="{{url_for('form_add_pasajero')}}" class="btn btn-primary text-white"><i class="fa fa-plus"></i>  Nuevo</a>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="#">Todos los pasajeros</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <table
+          class="table table-striped table-hover table-bordered table-sm bg-white"
+        >
+          <thead>
+            <tr>
+              <td>CI</td>
+              <td>Nombre</td>
+              <td>Apellido</td>
+              <td>Edad</td>
+              <td style="width: 25%;">Acciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for pasajero in lista_pasajeros %}
+            <tr>
+              <td>{{ pasajero.ci }}</td>
+              <td>{{ pasajero.nombre }}</td>
+              <td>{{ pasajero.apellido }}</td>
+              <td>{{ pasajero.edad }}</td>
+              <td>
+                <a href="/edit_pasajero/{{pasajero._id}}" class="btn btn-secondary"
+                  ><i class="fa fa-pencil"></i>Editar</a
+                >
+                <a
+                  href="/delete_pasajero/{{pasajero._id}}"
+                  class="btn btn-danger btn-delete"
+                  ><i class="fa fa-trash"></i>Eliminar</a
+                >
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

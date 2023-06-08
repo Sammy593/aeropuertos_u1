@@ -1,0 +1,65 @@
+{% extends "layout.html" %} 
+{% block index_vuelos %}
+<main class="app-content">
+    <div class="app-title">
+        <div>
+        <h1><i class="fa fa-dashboard"></i> Vuelos</h1>
+        <p>Sistema de administracion para Aeropuerto</p>
+        <a href="{{url_for('form_add_vuelo')}}" class="btn btn-primary text-white">Nuevo</a>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a href="#">Todos los vuelos</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <div class="tile">
+            <table
+            class="table table-striped table-hover table-bordered table-sm bg-white"
+            >
+            <thead>
+                <tr>
+                <td>Avion</td>
+                <td>Precio</td>
+                <td>Origen</td>
+                <td>Destino</td>
+                <td>Fecha Salida</td>
+                <td>Estado</td>
+                <td>Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vuelo in lista_vuelos %}
+                <tr>
+                <td>{{vuelo.idAvion}}</td>
+                <td>{{vuelo.precio}}</td>
+                <td>{{vuelo.origen}}</td>
+                <td>{{vuelo.destino}}</td>
+                <td>{{vuelo.fecha_salida}}</td>
+                <td>{{vuelo.estado}}</td>
+                <td>
+                    <a href="/edit_vuelo/{{vuelo._id}}" class="btn btn-secondary"
+                    >Editar</a
+                    >
+                    {%if vuelo.estado == "Activo" %}
+                    <a
+                    href="/delete_vuelo/{{vuelo._id}}"
+                    class="btn btn-danger btn-delete">Desactivar</a>
+                    {%endif%}
+
+                    {%if vuelo.estado == "Activo" %}
+                    <a
+                    href="/btn_vender_vuelo/{{vuelo._id}}"
+                    class="btn btn-info">Vender</a>
+                    {%endif%}
+                </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
